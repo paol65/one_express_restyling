@@ -4,7 +4,7 @@ Tre proposte grafiche per la homepage di oneexpress.it, pensate per essere ritag
 
 | Proposta | Direzione |
 |---|---|
-| **A · Blu Express** | La più vicina a ExpeditorBlue: hero con modulo di tracciamento, servizi a schede, preventivo, FAQ. |
+| **A · Blu Express** | Hero con modulo di tracciamento, servizi a schede, preventivo, FAQ. |
 | **B · Sportello digitale** | Pensata per chi deve fare subito una cosa: tracciare, chiedere un preventivo, trovare la filiale. |
 | **C · Il Primo** | Editoriale e scura, con il carattere MicroSquare del marchio. |
 
