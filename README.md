@@ -28,6 +28,6 @@ Per avere un link pubblico, attiva GitHub Pages: Settings → Pages → Deploy f
 
 ## Da completare prima della pubblicazione
 
-- Segnaposto da sostituire: numero assistenza, indirizzo, P.IVA, testimonianze reali.
+- Segnaposto da sostituire: indirizzo, P.IVA, testimonianze reali.
 - Video di Claudio e Andrea Franceschelli: per ora c'è la miniatura con l'icona play.
 - Dati ambientali Green Pallet: verificare che corrispondano al report pubblicato (D.Lgs. 30/2026).

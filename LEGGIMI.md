@@ -28,7 +28,7 @@ Ogni sezione è preceduta da un commento `<!-- EB: … -->` con il nome del bloc
 Il CSS di ogni proposta è tutto nel `<style>` in testa al file, con variabili colore (`--blu`, `--scuro`, `--giallo`…) da copiare nel CSS aggiuntivo del tema.
 
 ## Da completare prima della messa online
-- Segnaposto tra parentesi quadre: numero assistenza, indirizzo, P.IVA, tempo di risposta preventivi, link social.
+- Segnaposto tra parentesi quadre: indirizzo, P.IVA, tempo di risposta preventivi, link social.
 - Testimonianze: le foto sono persone reali della library; le citazioni sono segnaposto da sostituire con frasi vere (rubrica «L'Eccellenza del Territorio»).
 - Descrizioni brevi delle Formule (Silver, Gold, ecc.): da validare con il commerciale.
 - Numeri usati (fonte: documento «Posizionamento Strategico» e Brand Book): 139 affiliati, 13.000 bancali/giorno, 3 hub, 41 paesi europei (senza citare partner), 655 MWh e 193 tCO₂eq (2024), dal 2008.
@@ -72,3 +72,14 @@ Testi ambientali riscritti per il D.Lgs. 30/2026, che recepisce la direttiva (UE
 - Claudio: "I traguardi del 2026" / **Un anno di grandi successi: contro ogni previsione...**
 - Andrea: "Gli obiettivi del 2027" / **Sarà un anno di importantissime sfide: le novità del 2027...**
 - Immagini: `img/video-claudio-franceschelli.jpg` e `img/video-andrea-franceschelli.jpg`. Quando i video saranno pronti, nel template il box diventa un widget Video di Elementor (YouTube/Vimeo o file) con questa foto come immagine di copertina.
+
+## Aggiornamento 28/10/2026: telefono ed email
+
+- Il segnaposto del numero assistenza è stato sostituito ovunque con **+39 051 3766611** (link `tel:+390513766611`), affiancato da **info@oneexpress.it** (link `mailto:`).
+- Dove compaiono, in tutte e tre le proposte:
+  - top bar;
+  - footer, in un blocco grande sottolineato in giallo;
+  - mega-menu Contatti;
+  - menu mobile (gruppo "Telefono ed email" e riga in fondo);
+  - schema JSON-LD Organization (`telephone`, `email`).
+- PDF e anteprime rigenerati. Lo zip `OneExpress-PDF-homepage.zip` contiene i tre PDF.
