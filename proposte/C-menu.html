@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposta C – Mega-menu aperti</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&amp;family=Assistant:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"MicroSquare";src:url("img/microsquare-bold-italic.ttf") format("truetype");font-weight:700;font-style:italic;font-display:swap}
+body{margin:0;background:#000c26}
+a{color:#FCDE15}a:hover{color:#FFF185}
+.oe{--scuro:#001E5A;--notte:#00143d;--giallo:#FCDE15;--tx:#d5def0;font-family:Assistant,Helvetica,Arial,sans-serif;color:var(--tx);font-size:16px;line-height:1.5;padding:44px 0 72px}
+.oe *{box-sizing:border-box}
+.oe svg{width:20px;height:20px;flex:none}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+.oe h3,.oe h4{font-family:Heebo,sans-serif;color:#fff;margin:0}
+.label{max-width:1360px;margin:0 auto 12px;padding:0 40px;font-family:Heebo,sans-serif;font-weight:800;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:#fff;display:flex;gap:10px;align-items:center}
+.label span{background:var(--giallo);color:var(--scuro);padding:3px 10px}
+.state{max-width:1360px;margin:0 auto 56px;background:var(--scuro);overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.oe-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:96px;flex-wrap:wrap}
+.logo img{height:60px;display:block}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{font-family:Heebo,sans-serif;font-weight:700;font-size:16px;color:#fff;text-decoration:none;padding:12px 14px;display:inline-flex;gap:5px;align-items:center;border-bottom:3px solid transparent}
+.nav a.on{border-color:var(--giallo);color:var(--giallo)}
+.nav svg{width:16px;height:16px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:Heebo,sans-serif;font-weight:800;font-size:15px;text-decoration:none;padding:14px 22px;min-height:48px;transform:skewX(-8deg)}
+.btn>*{transform:skewX(8deg)}
+.btn-y{background:var(--giallo);color:var(--scuro)}.btn-y:hover{color:var(--scuro)}
+.oe-mega{background:var(--notte);border-top:4px solid var(--giallo)}
+.mg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1.05fr);gap:40px;padding-top:40px;padding-bottom:40px}
+.intro .big{font-family:MicroSquare,Heebo,sans-serif;font-style:italic;font-weight:700;font-size:46px;line-height:1;color:#fff}
+.intro .big em{font-style:inherit;color:var(--giallo)}
+.intro p{margin:14px 0 18px;font-size:15.5px}
+.mg h4{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--giallo);margin-bottom:10px}
+.mg ul{list-style:none;padding:0;margin:0}
+.mg li a{display:flex;justify-content:space-between;align-items:center;gap:10px;text-decoration:none;color:#fff;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12);font-family:Heebo,sans-serif;font-weight:700;font-size:17px;min-height:48px}
+.mg li a small{display:block;font-family:Assistant,sans-serif;font-weight:400;font-size:14px;color:var(--tx)}
+.mg li a svg{color:var(--giallo);width:18px;height:18px}
+.mg li a:hover{color:var(--giallo)}
+.pic{position:relative;min-height:300px;overflow:hidden;display:flex;align-items:flex-end;text-decoration:none;clip-path:polygon(10% 0,100% 0,100% 100%,0 100%)}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pic:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,20,61,0) 30%,rgba(0,20,61,.95) 100%)}
+.pic div{position:relative;z-index:1;padding:22px 22px 22px 40px}
+.pic h3{font-size:20px;font-weight:900;margin-bottom:4px}
+.pic p{margin:0;font-size:14.5px;color:var(--tx)}
+.ybar{background:var(--giallo)}
+.ybar .wrap{display:flex;gap:26px;align-items:center;min-height:54px;flex-wrap:wrap;font-family:Heebo,sans-serif;font-weight:800;font-size:15px}
+.ybar a{color:var(--scuro);text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+.ybar svg{width:18px;height:18px}
+.field{display:flex;flex-direction:column;gap:6px;margin:10px 0 14px}
+.field label{font-family:Heebo,sans-serif;font-weight:700;font-size:13px;color:#fff}
+.field input{font:inherit;font-size:16px;border:0;padding:12px 14px;min-height:48px}
+.langs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;background:var(--notte)}
+.langs a{padding:26px 28px;text-decoration:none;color:var(--tx);border-right:1px solid rgba(255,255,255,.1)}
+.langs a.on{background:var(--giallo);color:var(--scuro)}
+.langs b{display:block;font-family:MicroSquare,Heebo,sans-serif;font-style:italic;font-weight:700;font-size:30px;color:#fff}
+.langs a.on b{color:var(--scuro)}
+@media (max-width:1000px){.mg{grid-template-columns:repeat(2,minmax(0,1fr))}.langs{grid-template-columns:repeat(2,minmax(0,1fr))}.nav{display:none}}
+@media (max-width:600px){.wrap{padding:0 16px}.mg,.langs{grid-template-columns:minmax(0,1fr)}}
+</style>
+
+</head>
+<body>
+<div class="oe">
+
+<!-- ===== SERVIZI ===== -->
+<div class="label"><span>Aperto</span>Servizi</div>
+<div class="state">
+  <header class="oe-header"><div class="wrap">
+    <a class="logo" href="#"><img src="img/logo2r-bianco.png" alt="One Express – home"></a>
+    <nav class="nav" aria-label="Menu principale"><a href="#" class="on" aria-expanded="true">Servizi<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></a><a href="#">Settori</a><a href="#">Azienda</a><a href="#">Lavora con noi</a><a href="#">Contatti</a></nav>
+    <a class="btn btn-y" href="#"><span>Preventivo</span></a>
+  </div></header>
+  <div class="oe-mega"><div class="wrap mg">
+    <div class="intro"><span class="big">Otto formule.<br><em>Un solo standard.</em></span><p>Scegli per tempi, budget e destinatario. Se hai dubbi, ti consiglia la filiale.</p><a class="btn btn-y" href="#"><span>Confronta i servizi</span></a></div>
+    <div><h4>Italia</h4><ul>
+      <li><a href="#"><span>Silver<small>Standard 24/48/72 h</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Gold<small>Priorità, tempi certi</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Gold ore 12<small>Entro mezzogiorno</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Value Pallet<small>Programmata, conveniente</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    </ul></div>
+    <div><h4>Su misura ed Europa</h4><ul>
+      <li><a href="#"><span>GDO Plus<small>Su appuntamento</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Groupage<small>Spazio condiviso</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>LTL<small>Carichi parziali</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Internazionale<small>41 paesi in Europa</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    </ul></div>
+    <a class="pic" href="#"><img src="img/camion-tramonto.jpg" alt=""><div><h3>Gold ore 12</h3><p>Il tuo pallet in cantiere o in negozio entro mezzogiorno.</p></div></a>
+  </div></div>
+  <div class="ybar"><div class="wrap"><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Traccia spedizione</a><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Tempi di consegna</a><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Trova filiale</a><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4zM3 7v10l9 4 9-4V7"/></svg>Come preparare il pallet</a></div></div>
+</div>
+
+<!-- ===== SETTORI ===== -->
+<div class="label"><span>Aperto</span>Settori</div>
+<div class="state">
+  <header class="oe-header"><div class="wrap">
+    <a class="logo" href="#"><img src="img/logo2r-bianco.png" alt="One Express – home"></a>
+    <nav class="nav" aria-label="Menu principale"><a href="#">Servizi</a><a href="#" class="on" aria-expanded="true">Settori<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></a><a href="#">Azienda</a><a href="#">Lavora con noi</a><a href="#">Contatti</a></nav>
+    <a class="btn btn-y" href="#"><span>Preventivo</span></a>
+  </div></header>
+  <div class="oe-mega"><div class="wrap mg">
+    <div class="intro"><span class="big">Ogni filiera,<br><em>la sua strada.</em></span><p>Regole, orari e destinatari diversi: li conosciamo uno per uno.</p></div>
+    <div><h4>Distribuzione</h4><ul>
+      <li><a href="#"><span>GDO e retail<small>Appuntamenti e piattaforme</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Food &amp; beverage<small>Confezionati e bevande</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>E-commerce B2B<small>Ordini su pallet</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Privati<small>Anche senza partita IVA</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    </ul></div>
+    <div><h4>Produzione</h4><ul>
+      <li><a href="#"><span>Industria e meccanica<small>Componenti e ricambi</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Edilizia e materiali<small>In cantiere entro le 12</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Arredo ed elettrodomestici<small>Voluminosi</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Agricoltura e vivai<small>Mezzi tecnici</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    </ul></div>
+    <a class="pic" href="#"><img src="img/muletti.jpg" alt=""><div><h3>Parla con un esperto</h3><p>Raccontaci cosa spedisci: troviamo la formula.</p></div></a>
+  </div></div>
+</div>
+
+<!-- ===== AZIENDA ===== -->
+<div class="label"><span>Aperto</span>Azienda</div>
+<div class="state">
+  <header class="oe-header"><div class="wrap">
+    <a class="logo" href="#"><img src="img/logo2r-bianco.png" alt="One Express – home"></a>
+    <nav class="nav" aria-label="Menu principale"><a href="#">Servizi</a><a href="#">Settori</a><a href="#" class="on" aria-expanded="true">Azienda<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></a><a href="#">Lavora con noi</a><a href="#">Contatti</a></nav>
+    <a class="btn btn-y" href="#"><span>Preventivo</span></a>
+  </div></header>
+  <div class="oe-mega"><div class="wrap mg">
+    <div class="intro"><span class="big">Tutti per la One.<br><em>La One per tutti.</em></span><p>139 imprese, 3 hub, una sola identità dal 2008.</p></div>
+    <div><h4>Chi siamo</h4><ul>
+      <li><a href="#"><span>La nostra storia<small>Interporto di Bologna</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Il network degli affiliati<small>139 imprese</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Hub e rete europea<small>Consegne in 41 paesi</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Qualità e certificazioni<small>ISO 9001</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    </ul></div>
+    <div><h4>Valori e racconti</h4><ul>
+      <li><a href="#"><span>Green Pallet<small>Dati ambientali</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>One Academy<small>Con il Politecnico di Milano</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>L'Eccellenza del Territorio<small>Storie degli affiliati</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>News ed eventi<small>New One, New Way</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    </ul></div>
+    <a class="pic" href="#"><img src="img/hub-tramonto.jpg" alt=""><div><h3>Diventa affiliato</h3><p>Porta la tua impresa nella rete del pallet espresso.</p></div></a>
+  </div></div>
+</div>
+
+<!-- ===== LAVORA CON NOI ===== -->
+<div class="label"><span>Aperto</span>Lavora con noi</div>
+<div class="state">
+  <header class="oe-header"><div class="wrap">
+    <a class="logo" href="#"><img src="img/logo2r-bianco.png" alt="One Express – home"></a>
+    <nav class="nav" aria-label="Menu principale"><a href="#">Servizi</a><a href="#">Settori</a><a href="#">Azienda</a><a href="#" class="on" aria-expanded="true">Lavora con noi<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></a><a href="#">Contatti</a></nav>
+    <a class="btn btn-y" href="#"><span>Preventivo</span></a>
+  </div></header>
+  <div class="oe-mega"><div class="wrap mg">
+    <div class="intro"><span class="big">Sempre<br><em>e comunque.</em></span><p>Cerchiamo persone che amano fare le cose bene, in squadra.</p><a class="btn btn-y" href="#"><span>Posizioni aperte</span></a></div>
+    <div><h4>Persone</h4><ul>
+      <li><a href="#"><span>Autisti e magazzinieri<small>Hub e filiali</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Uffici e sede<small>Bologna</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Candidatura spontanea<small>Invia il CV</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    </ul></div>
+    <div><h4>Imprese</h4><ul>
+      <li><a href="#"><span>Diventa affiliato<small>Entra nel network</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>One Academy<small>300+ persone formate</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Diventa fornitore<small>Mezzi, servizi, tecnologia</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    </ul></div>
+    <a class="pic" href="#"><img src="img/muletti-hub.jpg" alt=""><div><h3>Vita negli hub</h3><p>Turni, squadra, sicurezza: com'è lavorare con noi.</p></div></a>
+  </div></div>
+</div>
+
+<!-- ===== CONTATTI ===== -->
+<div class="label"><span>Aperto</span>Contatti</div>
+<div class="state">
+  <header class="oe-header"><div class="wrap">
+    <a class="logo" href="#"><img src="img/logo2r-bianco.png" alt="One Express – home"></a>
+    <nav class="nav" aria-label="Menu principale"><a href="#">Servizi</a><a href="#">Settori</a><a href="#">Azienda</a><a href="#">Lavora con noi</a><a href="#" class="on" aria-expanded="true">Contatti<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></a></nav>
+    <a class="btn btn-y" href="#"><span>Preventivo</span></a>
+  </div></header>
+  <div class="oe-mega"><div class="wrap mg">
+    <div class="intro"><span class="big">Una filiale<br><em>vicino a te.</em></span><div class="field"><label for="cm-cap">CAP o città</label><input id="cm-cap" placeholder="Es. 40127 o Bologna"></div><a class="btn btn-y" href="#"><span>Trova filiale</span></a></div>
+    <div><h4>Assistenza</h4><ul>
+      <li><a href="#"><span>Traccia spedizione<small>Numero o DDT</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Domande frequenti<small>Imballo, misure, costi</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>[Numero assistenza]<small>Lun–ven, [orari]</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    </ul></div>
+    <div><h4>Commerciale e sede</h4><ul>
+      <li><a href="#"><span>Chiedi un preventivo<small>Gratis, senza impegno</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Sede One Express<small>Interporto di Bologna</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#"><span>Stampa e media<small>[email]</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    </ul></div>
+    <a class="pic" href="#"><img src="img/stretta-mano.jpg" alt=""><div><h3>Chi ritira, risponde</h3><p>Ogni spedizione ha una persona di riferimento.</p></div></a>
+  </div></div>
+</div>
+
+<!-- ===== LINGUA ===== -->
+<div class="label"><span>Aperto</span>Lingua</div>
+<div class="state">
+  <div class="langs">
+    <a href="#" class="on" aria-current="true"><b>IT</b>Italiano</a>
+    <a href="#"><b>EN</b>English · Shipping search</a>
+    <a href="#"><b>DE</b>Deutsch · Suche Sendung</a>
+    <a href="#"><b>ES</b>Español · Sobre nosotros</a>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
