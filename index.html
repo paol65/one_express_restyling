@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<title>One Express Restyling Homepage</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@500;700;800;900&family=Assistant:wght@400;600;700&display=swap">
+<style>
+body{margin:0}img{max-width:100%}
+/* Layout: brand-navy viewing room; a control bar on top, the proposal shown full-bleed below in a browser or phone frame. Single dark look on purpose (brand). */
+:root{
+  --notte:#00143d; --scuro:#001E5A; --blu:#1365A4; --giallo:#FCDE15; --linea:rgba(255,255,255,.14); --testo:#e6ecf7; --tenue:#9fb0cf;
+  --display:"Heebo",Arial,sans-serif; --body:"Assistant",Helvetica,Arial,sans-serif;
+  color-scheme:dark;
+}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{background:var(--notte);color:var(--testo);font-family:var(--body);font-size:15px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--giallo);outline-offset:2px}
+
+/* gate */
+.gate{min-height:100%;display:grid;place-items:center;padding-block:40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.gate form{width:100%;max-width:380px;display:grid;gap:14px}
+.gate img{height:44px;width:auto;margin-bottom:14px}
+.gate h1{font:800 26px/1.15 var(--display);margin:0;text-wrap:balance}
+.gate p{margin:0;color:var(--tenue);line-height:1.5}
+.gate label{font:700 13px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--tenue)}
+.gate input{height:50px;border-radius:8px;border:1px solid var(--linea);background:rgba(255,255,255,.06);color:var(--testo);padding:0 14px;font:600 17px var(--body)}
+.gate .go{height:50px;border:0;border-radius:8px;background:var(--giallo);color:var(--notte);font:800 16px var(--display);cursor:pointer}
+.gate .err{color:#ffb4a8;min-height:1.4em;font-weight:600}
+
+/* app */
+.app{height:100%;display:flex;flex-direction:column}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));border-bottom:1px solid var(--linea);background:var(--scuro)}
+.bar .brand{display:flex;align-items:center;gap:12px;margin-right:auto;min-width:0}
+.bar .brand img{height:30px;width:auto}
+.bar .brand span{font:700 13px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--tenue);white-space:nowrap}
+.grp{display:flex;gap:4px;max-width:100%;overflow-x:auto;scrollbar-width:none;background:rgba(0,0,0,.25);padding:4px;border-radius:10px}
+.grp button{border:0;background:none;padding:8px 12px;min-height:38px;border-radius:7px;cursor:pointer;font:700 14px var(--display);color:var(--tenue);white-space:nowrap}
+.grp button[aria-pressed="true"]{background:var(--giallo);color:var(--notte)}
+.info{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.info h2{margin:0;font:800 19px var(--display);color:#fff}
+.info p{margin:0;color:var(--tenue);max-width:72ch}
+.stage{flex:1;min-height:0;position:relative;overflow:hidden;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 16px}
+.browser{height:100%;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.chrome{height:30px;flex:0 0 30px;background:#e8ecf3;display:flex;align-items:center;gap:6px;padding:0 12px}
+.chrome i{width:10px;height:10px;border-radius:50%;background:#c3cad8}
+.chrome b{margin-left:12px;font:600 12px var(--body);color:#5b647a;background:#fff;border-radius:6px;padding:3px 10px}
+.viewport{flex:1;min-height:0;position:relative;overflow:hidden}
+.viewport iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;background:#fff}
+.phonewrap{height:100%;display:flex;justify-content:center;align-items:flex-start;gap:28px}
+.phone{position:relative;border-radius:46px;background:#0b0f1a;padding:12px;box-shadow:0 20px 50px rgba(0,0,0,.4);transform-origin:top center}
+.phone iframe{display:block;width:390px;height:844px;border:0;border-radius:34px;background:#fff}
+.note{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:22px;font:600 12px var(--body);color:var(--tenue)}
+@media (max-width:700px){.bar .brand span{display:none}.info p{display:none}.bar{gap:8px}.grp button{padding:8px 10px;font-size:13px}}
+.phone.flat{border-radius:0;padding:0;background:none;box-shadow:none;transform:none!important;width:100%}
+.phone.flat iframe{width:100%;border-radius:8px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+</head>
+<body>
+<div class="gate" id="gate">
+  <form id="gform" autocomplete="off">
+    <img src="proposte/img/logo2r-bianco.png" alt="One Express">
+    <h1>Restyling homepage: tre proposte</h1>
+    <p>Area riservata. Inserisci la password che ti è stata comunicata.</p>
+    <label for="pw">Password</label>
+    <input id="pw" type="password" autocomplete="current-password" required>
+    <button class="go" type="submit">Entra</button>
+    <div class="err" id="err" role="alert"></div>
+  </form>
+</div>
+
+<div class="app" id="app" hidden>
+  <div class="bar">
+    <div class="brand"><img src="proposte/img/logo2r-bianco.png" alt="One Express"><span>Restyling homepage</span></div>
+    <div class="grp" role="group" aria-label="Proposta">
+      <button id="pA" data-p="A">A · Blu Express</button>
+      <button id="pB" data-p="B">B · Sportello digitale</button>
+      <button id="pC" data-p="C">C · Il Primo</button>
+    </div>
+    <div class="grp" role="group" aria-label="Dispositivo">
+      <button id="dD" data-d="desktop">Desktop</button>
+      <button id="dM" data-d="mobile">Mobile</button>
+    </div>
+    <div class="grp" role="group" aria-label="Menu">
+      <button id="mC" data-m="chiuso">Menu chiuso</button>
+      <button id="mA" data-m="aperto">Menu aperto</button>
+    </div>
+  </div>
+  <div class="info"><h2 id="title"></h2><p id="desc"></p></div>
+  <div class="stage" id="stage"></div>
+</div>
+
+<script>
+(function(){
+  var HASH='f9c3198d0a0541966da0a65e1585cf81fa3b89018d356a9720a8866391e42574';
+  var P={
+    A:{t:'Proposta A · Blu Express',d:'La più vicina al template ExpeditorBlue: hero con slider e modulo di tracciamento, servizi a schede, preventivo, FAQ.'},
+    B:{t:'Proposta B · Sportello digitale',d:'Pensata per chi deve fare una cosa subito: tracciare, chiedere un preventivo, trovare la filiale. Confronto con i portali online.'},
+    C:{t:'Proposta C · Il Primo',d:'Editoriale e scura, con il carattere MicroSquare del marchio: racconta il network, le persone e i numeri.'}
+  };
+  var st={p:'A',d:'desktop',m:'chiuso'};
+  var gate=document.getElementById('gate'),app=document.getElementById('app');
+  function ok(){try{return sessionStorage.getItem('oe-ok')==='1'}catch(e){return false}}
+  async function sha(s){var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0')}).join('')}
+  document.getElementById('gform').addEventListener('submit',async function(e){
+    e.preventDefault();
+    var v=document.getElementById('pw').value.trim();
+    if(await sha(v)===HASH){try{sessionStorage.setItem('oe-ok','1')}catch(e){} open();}
+    else{document.getElementById('err').textContent='Password non corretta. Controlla maiuscole e trattini e riprova.';}
+  });
+  function open(){gate.hidden=true;app.hidden=false;render();}
+  document.querySelectorAll('.grp button').forEach(function(b){b.addEventListener('click',function(){
+    if(b.dataset.p)st.p=b.dataset.p; if(b.dataset.d)st.d=b.dataset.d; if(b.dataset.m)st.m=b.dataset.m; render();
+  });});
+  function press(){document.querySelectorAll('.grp button').forEach(function(b){
+    var on=(b.dataset.p&&b.dataset.p===st.p)||(b.dataset.d&&b.dataset.d===st.d)||(b.dataset.m&&b.dataset.m===st.m);
+    b.setAttribute('aria-pressed',on?'true':'false');});}
+  var stage=document.getElementById('stage');
+  function render(){
+    press();
+    document.getElementById('title').textContent=P[st.p].t;
+    document.getElementById('desc').textContent=P[st.p].d;
+    stage.innerHTML='';
+    if(st.d==='desktop'){
+      var file=st.m==='aperto'?st.p+'-menu.html':st.p+'-home.html';
+      var br=document.createElement('div');br.className='browser';
+      br.innerHTML='<div class="chrome"><i></i><i></i><i></i><b>oneexpress.it</b></div><div class="viewport"><iframe title="'+P[st.p].t+' desktop" src="proposte/'+file+'"></iframe></div>';
+      stage.appendChild(br); fitDesktop();
+    }else{
+      var src='proposte/'+st.p+'-home.html'+(st.m==='aperto'?'#menu-servizi':'');
+      var w=document.createElement('div');w.className='phonewrap';
+      w.innerHTML='<div class="phone"><iframe title="'+P[st.p].t+' mobile" src="'+src+'"></iframe></div>';
+      stage.appendChild(w); fitPhone();
+    }
+  }
+  function fitDesktop(){
+    var vp=stage.querySelector('.viewport'); if(!vp)return;
+    var f=vp.querySelector('iframe'); var s=Math.min(1,vp.clientWidth/1440);
+    f.style.width='1440px'; f.style.height=(vp.clientHeight/s)+'px'; f.style.transform='scale('+s+')';
+  }
+  function fitPhone(){
+    var ph=stage.querySelector('.phone'); if(!ph)return;
+    var h=stage.clientHeight-16, w=stage.clientWidth;
+    if(w<430){ph.classList.add('flat');ph.querySelector('iframe').style.height=h+'px';ph.parentNode.style.height=h+'px';return;}
+    var s=Math.min(1,h/868,w/414); ph.style.transform='scale('+s+')';
+    ph.parentNode.style.height=(868*s)+'px';
+  }
+  window.addEventListener('resize',function(){fitDesktop();fitPhone();});
+  if(ok())open();
+})();
+</script>
+
+</body>
+</html>

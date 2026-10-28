@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposta C – Il Primo – Homepage</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&amp;family=Assistant:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"MicroSquare";src:url("img/microsquare-bold-italic.ttf") format("truetype");font-weight:700;font-style:italic;font-display:swap}
+body{margin:0;background:#001E5A}
+a{color:#FCDE15}a:hover{color:#FFF185}
+.oe{--blu:#1365A4;--scuro:#001E5A;--notte:#00143d;--giallo:#FCDE15;--gchiaro:#FFF185;--verde:#00A896;--chiaro:#4287F5;--tx:#d5def0;font-family:Assistant,Helvetica,Arial,sans-serif;color:var(--tx);font-size:17px;line-height:1.55;background:var(--scuro)}
+.oe *{box-sizing:border-box}
+.oe svg{width:22px;height:22px;flex:none}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+.oe h1,.oe h2,.oe h3,.oe h4{font-family:Heebo,Helvetica,Arial,sans-serif;color:#fff;margin:0}
+.ms{font-family:MicroSquare,Heebo,sans-serif;font-style:italic;font-weight:700;letter-spacing:.01em}
+.tag{font-family:Heebo,sans-serif;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--giallo)}
+.h2{font-size:52px;font-weight:900;line-height:1.02;letter-spacing:-1px;margin-top:14px}
+.lead{font-size:19px;color:var(--tx);margin:18px 0 0;max-width:620px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:Heebo,sans-serif;font-weight:800;font-size:16px;text-decoration:none;border-radius:4px;padding:16px 26px;min-height:52px;border:0;transform:skewX(-8deg)}
+.btn>*{transform:skewX(8deg)}
+.btn-y{background:var(--giallo);color:var(--scuro)}.btn-y:hover{background:var(--gchiaro);color:var(--scuro)}
+.btn-l{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.6)}.btn-l:hover{color:var(--giallo)}
+/* topbar/header */
+.oe-topbar{background:var(--notte);font-size:14px}
+.oe-topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:42px;flex-wrap:wrap}
+.oe-topbar a{color:var(--tx);text-decoration:none;font-weight:600}.oe-topbar a:hover{color:var(--giallo)}
+.tbr{display:flex;gap:22px;flex-wrap:wrap;align-items:center}
+.lang a.on{color:var(--giallo)}
+.oe-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:100px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.12)}
+.logo img{height:64px;display:block}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{font-family:Heebo,sans-serif;font-weight:700;font-size:16px;color:#fff;text-decoration:none;padding:12px 14px;display:inline-flex;gap:5px;align-items:center;border-bottom:3px solid transparent}
+.nav a:hover{border-color:var(--giallo);color:#fff}
+.nav svg{width:16px;height:16px;color:var(--giallo)}
+/* hero */
+.oe-hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center;padding-top:72px;padding-bottom:64px}
+.oe-hero h1{font-size:30px;font-weight:800;color:var(--giallo);letter-spacing:.02em}
+.oe-hero .big{display:block;font-family:MicroSquare,Heebo,sans-serif;font-style:italic;font-weight:700;font-size:96px;line-height:.95;color:#fff;margin-top:18px;letter-spacing:-.01em}
+.oe-hero .big em{font-style:inherit;color:var(--giallo)}
+.oe-hero p{font-size:20px;margin:26px 0 0;max-width:560px}
+.hc{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap}
+.frame{position:relative;height:600px;clip-path:polygon(14% 0,100% 0,86% 100%,0 100%);overflow:hidden}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+.frame .cap{position:absolute;right:16%;bottom:24px;background:var(--giallo);color:var(--scuro);padding:12px 16px;font-family:Heebo,sans-serif;font-weight:800;font-size:14px}
+/* track bar */
+.oe-track{background:var(--giallo);color:var(--scuro)}
+.oe-track .wrap{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:18px;align-items:center;padding-top:26px;padding-bottom:26px}
+.oe-track h2{color:var(--scuro);font-size:26px;font-weight:900}
+.oe-track input{font:inherit;font-size:17px;border:0;border-radius:4px;padding:14px 16px;min-height:54px;width:100%;color:#18202f}
+.oe-track label{position:absolute;left:-9999px}
+.oe-track .btn-d{background:var(--scuro);color:#fff}
+.oe-track .alt{font-family:Heebo,sans-serif;font-weight:800;color:var(--scuro);text-decoration:underline;font-size:15px}
+/* values ribbon */
+.ribbon{overflow:hidden;border-bottom:1px solid rgba(255,255,255,.1);padding:34px 0}
+.ribbon div{display:flex;gap:44px;white-space:nowrap;font-family:MicroSquare,Heebo,sans-serif;font-style:italic;font-weight:700;font-size:64px;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.45);justify-content:center}
+.ribbon b{color:var(--giallo);-webkit-text-stroke:0}
+/* services list */
+.sec{padding:110px 0}
+.svh{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end;margin-bottom:48px}
+.list a{display:grid;grid-template-columns:90px 110px minmax(0,1fr) minmax(0,1.3fr) 48px;gap:24px;align-items:center;padding:24px 0;border-top:1px solid rgba(255,255,255,.14);text-decoration:none;color:var(--tx)}
+.list a:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+.list a:hover{background:rgba(255,255,255,.04)}
+.list .n{font-family:MicroSquare,Heebo,sans-serif;font-style:italic;font-weight:700;font-size:34px;color:var(--giallo)}
+.list img{height:72px;width:auto;background:#fff;border-radius:50%;padding:4px}
+.list h3{font-size:28px;font-weight:900}
+.list p{margin:0;font-size:16.5px}
+.list .ar{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:var(--giallo)}
+/* numbers */
+.oe-stats{background:var(--giallo);color:var(--scuro)}
+.oe-stats .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding-top:70px;padding-bottom:70px}
+.oe-stats b{display:block;font-family:MicroSquare,Heebo,sans-serif;font-style:italic;font-weight:700;font-size:84px;line-height:.9;color:var(--scuro)}
+.oe-stats span{display:block;font-family:Heebo,sans-serif;font-weight:800;font-size:16px;margin-top:12px;color:var(--scuro)}
+.oe-stats .def{grid-column:1/-1;font-size:19px;border-top:2px solid var(--scuro);padding-top:22px;margin-top:8px;color:#00143d}
+/* stories */
+.stories{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;margin-top:48px}
+.feat{position:relative;min-height:600px;overflow:hidden;display:flex;align-items:flex-end;text-decoration:none}
+.feat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.feat:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,20,61,0) 35%,rgba(0,20,61,.95) 100%)}
+.feat div{position:relative;z-index:1;padding:36px}
+.feat h3{font-size:36px;font-weight:900;line-height:1.1;margin:10px 0}
+.feat p{margin:0;color:var(--tx);max-width:560px}
+.side{display:flex;flex-direction:column;gap:28px}
+.mini{display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;text-decoration:none;color:var(--tx);align-items:center}
+.mini img{width:100%;height:170px;object-fit:cover;display:block}
+.mini h3{font-size:21px;font-weight:800;line-height:1.2;margin:6px 0}
+.mini p{margin:0;font-size:15px}
+.quote{background:var(--notte);padding:28px;border-left:0;position:relative}
+.quote blockquote{margin:0;font-size:19px;color:#fff;line-height:1.45}
+.quote cite{display:block;font-style:normal;margin-top:12px;font-size:14px}
+.quote cite b{color:var(--giallo);font-family:Heebo,sans-serif}
+/* sectors chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.chips a{border:1.5px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;padding:11px 18px;font-family:Heebo,sans-serif;font-weight:700;font-size:15px;min-height:44px;display:inline-flex;align-items:center}
+.chips a:hover{border-color:var(--giallo);color:var(--giallo)}
+/* green */
+.oe-green{background:#00332e}
+.oe-green .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.oe-green img{width:100%;height:520px;object-fit:cover;display:block;clip-path:polygon(0 0,100% 0,100% 100%,10% 100%)}
+.oe-green .tag{color:#5fe0cf}
+.gn{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:30px 0}
+.gn b{display:block;font-family:MicroSquare,Heebo,sans-serif;font-style:italic;font-weight:700;font-size:52px;color:#5fe0cf;line-height:1}
+.gn span{font-size:15px}
+.btn-g{background:#00A896;color:#00143d}.btn-g:hover{color:#00143d;background:#5fe0cf}
+/* quote form */
+.oe-quote .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
+.qf{background:#fff;color:#18202f;padding:36px;position:relative}
+.qf:before{content:"";position:absolute;left:0;top:0;width:100%;height:6px;background:var(--giallo)}
+.qf h3{color:var(--scuro);font-size:24px;font-weight:900;margin-bottom:18px}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label{font-family:Heebo,sans-serif;font-weight:700;font-size:13.5px;color:var(--scuro)}
+.field input,.field select{font:inherit;font-size:16px;border:1.5px solid #c4cddb;border-radius:4px;padding:12px 14px;min-height:50px;color:#18202f;background:#fff}
+.qf .btn{width:100%;justify-content:center}
+.small{font-size:13px;color:#606060;margin:12px 0 0}
+.steps{list-style:none;padding:0;margin:34px 0 0;display:flex;flex-direction:column;gap:22px}
+.steps li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;align-items:start}
+.steps .n{font-family:MicroSquare,Heebo,sans-serif;font-style:italic;font-weight:700;font-size:44px;color:var(--giallo);line-height:1}
+.steps h3{font-size:20px;font-weight:800}
+.steps p{margin:4px 0 0;font-size:16px}
+/* faq */
+.oe-faq{background:var(--notte)}
+.fqg{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:64px}
+.oe-faq details{border-top:1px solid rgba(255,255,255,.14)}
+.oe-faq details:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+.oe-faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:56px minmax(0,1fr) 28px;gap:12px;align-items:center;padding:20px 0;font-family:Heebo,sans-serif;font-weight:800;font-size:19px;color:#fff;min-height:44px}
+.oe-faq summary::-webkit-details-marker{display:none}
+.oe-faq summary i{font-family:MicroSquare,Heebo,sans-serif;font-weight:700;color:var(--giallo);font-size:22px}
+.oe-faq summary svg{color:var(--giallo)}
+.oe-faq details p{margin:0 0 22px 68px;font-size:16.5px;max-width:640px}
+/* news */
+.nw{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:44px}
+.nw a{text-decoration:none;color:var(--tx);display:flex;flex-direction:column;gap:12px}
+.nw img{width:100%;height:240px;object-fit:cover;display:block}
+.nw time{font-family:Heebo,sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--giallo)}
+.nw h3{font-size:21px;font-weight:800;line-height:1.25}
+/* footer */
+.oe-footer{background:var(--notte);border-top:6px solid var(--giallo)}
+.fbig{font-family:MicroSquare,Heebo,sans-serif;font-style:italic;font-weight:700;font-size:150px;line-height:.85;color:rgba(255,255,255,.06);padding-top:60px;white-space:nowrap;overflow:hidden}
+.fgrid{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(4,minmax(0,1fr));gap:32px;padding-top:40px;padding-bottom:44px;font-size:15px}
+.oe-footer h4{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--giallo);margin-bottom:12px}
+.oe-footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.oe-footer ul a{color:var(--tx);text-decoration:none}.oe-footer ul a:hover{color:var(--giallo)}
+.fbase{border-top:1px solid rgba(255,255,255,.12)}
+.fbase .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:18px;padding-bottom:24px;font-size:13.5px;flex-wrap:wrap}
+@media (max-width:1050px){.oe-hero .wrap,.svh,.stories,.oe-green .wrap,.oe-quote .wrap,.fqg{grid-template-columns:minmax(0,1fr)}.oe-hero .big{font-size:64px}.frame{height:420px}.list a{grid-template-columns:60px 80px minmax(0,1fr) 40px}.list p{display:none}.oe-stats .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}.nw,.fgrid{grid-template-columns:minmax(0,1fr)}.nav{display:none}.oe-track .wrap{grid-template-columns:minmax(0,1fr)}.ribbon div{font-size:40px;justify-content:flex-start}.h2{font-size:38px}}
+@media (max-width:600px){.wrap{padding:0 16px}.oe-hero .big{font-size:48px}.g2,.gn{grid-template-columns:minmax(0,1fr)}.mini{grid-template-columns:minmax(0,1fr)}.sec{padding:72px 0}.oe-stats b{font-size:56px}.fbig{font-size:64px}}
+
+/* video box (segnaposto finché il video non è pronto) */
+.vthumb{position:relative;display:block}.vthumb img{object-position:50% 30%}.vthumb .play{position:absolute;left:14px;bottom:14px;width:56px;height:56px;border-radius:50%;background:#FCDE15;color:#001E5A;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,20,61,.35)}.vthumb .play svg{width:24px;height:24px;margin-left:3px}.vthumb .vb{position:absolute;left:12px;top:12px;background:rgba(0,20,61,.82);color:#fff;font:700 12px Heebo,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:4px}.vlab{display:block;font-family:Heebo,sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#a9b7d3}
+</style>
+
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "One Express",
+  "url": "https://www.oneexpress.it/",
+  "logo": "https://www.oneexpress.it/[percorso-logo].png",
+  "foundingDate": "2008",
+  "description": "Pallet network italiano: 139 imprese di trasporto affiliate, 3 hub, consegne su pallet in Italia e in 41 paesi europei.",
+  "address": {
+   "@type": "PostalAddress",
+   "addressLocality": "Bologna",
+   "addressCountry": "IT",
+   "streetAddress": "[Interporto di Bologna – indirizzo]"
+  },
+  "sameAs": [
+   "[Facebook]",
+   "[Instagram]",
+   "[LinkedIn]",
+   "[YouTube]"
+  ]
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Come traccio una spedizione One Express?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Inserisci il numero di spedizione o il riferimento del DDT nella barra «Traccia il tuo pallet». Vedi stato, filiale e data di consegna prevista, in italiano, inglese, tedesco e spagnolo."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "In quanto tempo arriva un pallet in Italia?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "In 24, 48 o 72 ore lavorative con il servizio standard, in base ai CAP di partenza e arrivo."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Come chiedo un preventivo?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Indica CAP, numero di pallet, peso e misure: la filiale della tua zona ti risponde con un prezzo chiaro, gratis."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Quali sono le dimensioni standard di un pallet?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "L'Euro-pallet misura 120 × 80 cm, con altezza consigliata fino a 160 cm. Oltre 3.000 kg o 300 cm serve una gestione dedicata."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Come si imballa un pallet?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Merce dentro la base, peso uniforme, film estensibile e reggette se servono. Cartello «Non sovrapporre» se la merce non è impilabile."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Posso spedire se sono un privato?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Sì, tramite le filiali affiliate. Indica se ti serve la sponda idraulica."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Come si calcola il costo?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Distanza, peso reale, peso volumetrico e servizi accessori come sponda o appuntamento."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Spedite all'estero?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Sì: con la Formula Internazionale raggiungiamo 41 paesi europei, Regno Unito compreso."
+    }
+   }
+  ]
+ }
+]
+</script>
+<meta name="description" content="Spedizione pallet espresso in Italia in 24/48/72 ore e in 41 paesi europei. 139 filiali One Express: traccia la spedizione, calcola i tempi di consegna, chiedi un preventivo gratuito.">
+
+
+
+<style id="oe-mobile">
+/* EB: Mobile (<=860px) – header mobile, off-canvas, barra azioni */
+.m-head,.m-drawer,.m-bar{display:none}
+@media (max-width:860px){
+.oe-topbar,.oe-header{display:none!important}
+html{scroll-padding-top:64px}
+body{padding-bottom:76px}
+.m-head{display:flex;align-items:center;gap:6px;position:sticky;top:0;z-index:60;height:64px;padding:0 8px 0 16px;background:#00143d;color:#fff;border-bottom:1px solid rgba(255,255,255,.12)}
+.m-head .m-logo{margin-right:auto;display:flex;align-items:center}
+.m-head .m-logo img{height:34px;width:auto;display:block}
+.m-ib{width:48px;height:48px;display:inline-flex;align-items:center;justify-content:center;border:0;background:none;color:inherit;border-radius:2px;cursor:pointer;text-decoration:none;padding:0;min-height:0;flex:0 0 48px}
+.m-ib span{display:flex}
+.m-ib svg{width:24px;height:24px}
+.m-ib.m-burger{background:#FCDE15;color:#00143d;transform:skewX(-8deg)}
+.m-ib .m-ix{display:none}
+body.m-open .m-ib .m-ix{display:block}body.m-open .m-ib .m-io{display:none}
+body.m-open{overflow:hidden}
+.m-drawer{display:block;position:fixed;left:0;right:0;top:64px;bottom:0;z-index:59;background:#00143d;color:#fff;overflow-y:auto;overscroll-behavior:contain;padding:16px 16px 32px;transform:translateX(100%);visibility:hidden;transition:transform .28s ease,visibility .28s}
+body.m-open .m-drawer{transform:none;visibility:visible}
+.m-quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:18px}
+.m-quick a{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:2px;background:rgba(255,255,255,.06);color:#fff;text-decoration:none;font:700 15px/1.25 Heebo,sans-serif;min-height:84px}
+.m-quick svg{width:22px;height:22px;color:#FCDE15}
+.m-nav details{border-bottom:1px solid rgba(255,255,255,.12)}
+.m-nav summary{list-style:none;display:flex;align-items:center;justify-content:space-between;min-height:56px;font:800 19px/1.2 Heebo,sans-serif;cursor:pointer}
+.m-nav summary::-webkit-details-marker{display:none}
+.m-nav summary svg{width:22px;height:22px;transition:transform .2s}
+.m-nav details[open] summary svg{transform:rotate(180deg)}
+.m-sub{padding:0 0 14px}
+.m-sub h5{margin:10px 0 4px;font:700 12px/1.3 Heebo,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#a9b7d3}
+.m-sub a{display:block;padding:9px 0;color:#fff;text-decoration:none;font:600 16px/1.3 Assistant,Heebo,sans-serif}
+.m-sub a small{display:block;font-weight:400;font-size:14px;color:#a9b7d3}
+.m-foot{margin-top:20px;display:grid;gap:12px}
+.m-foot .m-row{display:flex;gap:10px;flex-wrap:wrap}
+.m-foot .m-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#fff;text-decoration:none;font:600 16px Assistant,Heebo,sans-serif}
+.m-foot .m-link svg{width:20px;height:20px}
+.m-lang{display:flex;gap:6px}
+.m-lang a{min-width:44px;min-height:40px;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.12);border-radius:2px;color:#fff;text-decoration:none;font:700 14px Heebo,sans-serif}
+.m-lang a.on{background:#fff;color:#00143d;border-color:#fff}
+.m-cta{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:2px;background:#FCDE15;color:#00143d;text-decoration:none;font:800 17px Heebo,sans-serif;transform:skewX(-8deg)}
+.m-cta svg{width:20px;height:20px}
+.m-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:58;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:#00143d;box-shadow:0 -6px 20px rgba(0,20,61,.14)}
+.m-bar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:52px;border-radius:2px;color:#fff;text-decoration:none;font:700 13px Heebo,sans-serif}
+.m-bar a svg{width:22px;height:22px}
+.m-bar a.y{background:#FCDE15;color:#00143d;transform:skewX(-8deg)}
+body.m-open .m-bar{display:none}
+html.m-static body{position:relative}html.m-static .m-bar{position:absolute}
+.wrap{padding-left:16px!important;padding-right:16px!important}
+.fgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:28px 16px!important}
+.fgrid>:first-child{grid-column:1/-1}
+
+.list a{grid-template-columns:44px 56px minmax(0,1fr) 36px!important;gap:12px!important;padding:16px 0!important}
+.list .n{font-size:24px!important}.list img{height:52px!important}.list h3{font-size:20px!important;line-height:1.15}
+.list .ar{width:36px!important;height:36px!important}
+.oe-green img{height:240px!important;clip-path:none!important}
+.frame{height:340px!important}
+.nw{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 16px;gap:14px;margin:0 -16px;padding:4px 16px 8px;scrollbar-width:none}
+.nw::-webkit-scrollbar{display:none}.nw>*{flex:0 0 84%;scroll-snap-align:start}
+
+}
+</style>
+</head>
+<body>
+<div class="oe">
+<!--M:start-->
+<!-- EB: Header mobile (logo + traccia + hamburger). Nel template: Elementor > Header mobile / off-canvas -->
+<div class="m-head">
+  <a class="m-logo" href="#"><img src="img/logo2r-bianco.png" alt="One Express – home"></a>
+  <a class="m-ib" href="#" aria-label="Traccia spedizione"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a>
+  <button class="m-ib m-burger" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="m-drawer"><span class="m-io"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span><span class="m-ix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></span></button>
+</div>
+<div class="m-drawer" id="m-drawer" role="dialog" aria-label="Menu">
+  <div class="m-quick"><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Traccia spedizione</a><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Chiedi un preventivo</a><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Trova filiale</a><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Tempi di consegna</a></div>
+  <nav class="m-nav" aria-label="Menu principale"><details data-m="servizi"><summary>Servizi<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="m-sub"><h5>Spedire in Italia</h5><a href="#">Silver<small>24/48/72 ore</small></a><a href="#">Gold<small>Priorità e tempi certi</small></a><a href="#">Gold ore 12<small>Entro mezzogiorno</small></a><a href="#">Value Pallet<small>La formula conveniente</small></a><h5>Soluzioni dedicate</h5><a href="#">GDO Plus<small>Su appuntamento alla GDO</small></a><a href="#">Groupage<small>Paghi lo spazio che usi</small></a><a href="#">LTL<small>Carichi parziali</small></a><a href="#">Internazionale<small>41 paesi in Europa</small></a><h5>Strumenti</h5><a href="#">Come preparare il pallet<small>Imballo, etichetta, misure</small></a><a href="#">Tutti i servizi<small>Confronta le formule</small></a></div></details><details data-m="settori"><summary>Settori<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="m-sub"><h5>Distribuzione</h5><a href="#">GDO e retail</a><a href="#">Food & beverage</a><a href="#">E-commerce B2B</a><h5>Produzione</h5><a href="#">Industria e meccanica</a><a href="#">Edilizia e materiali</a><a href="#">Cartario e packaging</a><h5>Casa e territorio</h5><a href="#">Arredo ed elettrodomestici</a><a href="#">Agricoltura e vivai</a><a href="#">Privati<small>Anche senza partita IVA</small></a></div></details><details data-m="azienda"><summary>Azienda<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="m-sub"><h5>Chi siamo</h5><a href="#">La nostra storia<small>Dal 2008, Interporto di Bologna</small></a><a href="#">Il network degli affiliati<small>139 imprese, un solo marchio</small></a><a href="#">Hub e rete europea<small>3 hub, 41 paesi</small></a><h5>Valori</h5><a href="#">Green Pallet<small>Fotovoltaico e dati ambientali</small></a><a href="#">Qualità e certificazioni<small>ISO 9001</small></a><a href="#">One Academy<small>Con il Politecnico di Milano</small></a><h5>Racconti</h5><a href="#">News ed eventi<small>New One, New Way · Area Tour</small></a><a href="#">L'Eccellenza del Territorio<small>Le storie degli affiliati</small></a></div></details><details data-m="lavora"><summary>Lavora con noi<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="m-sub"><h5>Carriere</h5><a href="#">Posizioni aperte<small>Sede, hub e filiali</small></a><a href="#">Autisti e magazzinieri</a><a href="#">Candidatura spontanea<small>Inviaci il tuo CV</small></a><h5>Imprese</h5><a href="#">Diventa affiliato One Express</a><a href="#">Diventa fornitore</a></div></details><details data-m="contatti"><summary>Contatti<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="m-sub"><h5>Assistenza</h5><a href="#">Dov'è la mia spedizione?<small>Traccia con numero o DDT</small></a><a href="#">Domande frequenti<small>Imballo, misure, costi</small></a><h5>Commerciale e sede</h5><a href="#">Chiedi un preventivo<small>Gratuito e senza impegno</small></a><a href="#">Sede One Express<small>Interporto di Bologna · [indirizzo]</small></a><a href="#">Stampa e media<small>[email ufficio stampa]</small></a></div></details></nav>
+  <div class="m-foot">
+    <a class="m-cta" href="#">Chiedi un preventivo gratuito<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="m-row"><a class="m-link" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>[Numero assistenza]</a><a class="m-link" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Area clienti</a></div>
+    <div class="m-lang"><a href="#" class="on" aria-current="true">IT</a><a href="#">EN</a><a href="#">DE</a><a href="#">ES</a></div>
+  </div>
+</div>
+<!-- EB: Barra azioni mobile (sticky in basso) -->
+<nav class="m-bar" aria-label="Azioni rapide">
+  <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Traccia</a>
+  <a class="y" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Preventivo</a>
+  <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Filiale</a>
+</nav>
+<script>
+(function(){
+  var b=document.querySelector('.m-burger');
+  function set(o){document.body.classList.toggle('m-open',o);b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Chiudi il menu':'Apri il menu');}
+  b.addEventListener('click',function(){set(!document.body.classList.contains('m-open'));});
+  document.querySelectorAll('.m-nav details').forEach(function(d){d.addEventListener('toggle',function(){if(d.open&&!window.mAll)document.querySelectorAll('.m-nav details').forEach(function(o){if(o!==d)o.open=false;});});});
+  var h=location.hash.match(/^#menu(?:-(\w+))?/);
+  if(h){set(true);if(h[1]==='all'){window.mAll=1;document.querySelectorAll('.m-nav details').forEach(function(d){d.open=true;});}else if(h[1]){var d=document.querySelector('.m-nav details[data-m="'+h[1]+'"]');if(d)d.open=true;}}
+})();
+</script>
+<!--M:end-->
+
+<!-- EB: Top bar -->
+<div class="oe-topbar"><div class="wrap">
+  <span>Il pallet espresso che connette l'Italia e l'Europa</span>
+  <div class="tbr"><a href="#">Trova filiale</a><a href="#">Tempi di consegna</a><a href="#">Area clienti</a><a href="#">[Numero assistenza]</a><span class="lang"><a href="#" class="on" aria-current="true">IT</a> · <a href="#">EN</a> · <a href="#">DE</a> · <a href="#">ES</a></span></div>
+</div></div>
+
+<!-- EB: Header + main menu (mega menu: vedi artboard C · Mega-menu aperti) -->
+<header class="oe-header"><div class="wrap">
+  <a class="logo" href="#"><img src="img/logo2r-bianco.png" alt="One Express – home"></a>
+  <nav class="nav" aria-label="Menu principale">
+    <a href="#">Servizi<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+    <a href="#">Settori<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+    <a href="#">Azienda<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+    <a href="#">Lavora con noi<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+    <a href="#">Contatti<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+  </nav>
+  <a class="btn btn-y" href="#"><span>Preventivo</span></a>
+</div></header>
+
+<!-- EB: Hero -->
+<section class="oe-hero"><div class="wrap">
+  <div>
+    <h1>Spedizioni di pallet espresso in Italia e in Europa</h1>
+    <span class="big">Il primo<br>è nel nostro <em>DNA.</em></span>
+    <p>Dal 2008 139 imprese di trasporto corrono sotto un solo marchio. Ritiriamo il tuo pallet vicino a te e lo consegniamo in 24, 48 o 72 ore.</p>
+    <div class="hc"><a class="btn btn-y" href="#"><span>Chiedi un preventivo</span></a><a class="btn btn-l" href="#"><span>Scopri i servizi</span></a></div>
+  </div>
+  <div class="frame"><img src="img/torre-uno.jpg" alt="Torre di pallet a forma di numero uno al tramonto"><span class="cap">13.000 bancali, ogni giorno</span></div>
+</div></section>
+
+<!-- EB: Tracking form (barra) -->
+<section class="oe-track"><div class="wrap">
+  <h2>Traccia il tuo pallet</h2>
+  <span style="position:relative"><label for="c-trk">Numero spedizione o DDT</label><input id="c-trk" placeholder="Numero spedizione o riferimento DDT"></span>
+  <a class="btn btn-d" href="#"><span>Traccia</span></a>
+  <a class="alt" href="#">Shipping search · Suche Sendung</a>
+</div></section>
+
+<div class="ribbon" aria-hidden="true"><div><span>Capillare</span><b>·</b><span>Veloce</span><b>·</b><span>Sicuro</span><b>·</b><span>Puntuale</span></div></div>
+
+<!-- EB: Services (lista editoriale) -->
+<section class="sec"><div class="wrap">
+  <div class="svh">
+    <div><span class="tag">Servizi</span><h2 class="h2">Otto modi di consegnare un pallet. Un solo standard.</h2></div>
+    <p class="lead">Scegli in base a tempi, budget e destinatario. Qualunque formula, la qualità One Express è la stessa da Bolzano a Palermo.</p>
+  </div>
+  <div class="list">
+    <a href="#"><span class="n">01</span><img src="img/formula-silver.png" alt=""><h3>Silver</h3><p>La consegna standard in tutta Italia in 24/48/72 ore.</p><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a href="#"><span class="n">02</span><img src="img/formula-gold.png" alt=""><h3>Gold</h3><p>Precedenza in rete e tempi certi per la merce urgente.</p><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a href="#"><span class="n">03</span><img src="img/formula-gold_ore12.png" alt=""><h3>Gold ore 12</h3><p>Il pallet arriva entro mezzogiorno.</p><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a href="#"><span class="n">04</span><img src="img/formula-valuepallet.png" alt=""><h3>Value Pallet</h3><p>Programmata e conveniente.</p><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a href="#"><span class="n">05</span><img src="img/formula-gdo_plus.png" alt=""><h3>GDO Plus</h3><p>Appuntamenti con piattaforme e punti vendita.</p><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a href="#"><span class="n">06</span><img src="img/formula-groupage.png" alt=""><h3>Groupage</h3><p>Paghi solo lo spazio che usi.</p><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a href="#"><span class="n">07</span><img src="img/formula-ltl.png" alt=""><h3>LTL</h3><p>Carichi parziali, tempi e costi su misura.</p><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a href="#"><span class="n">08</span><img src="img/formula-internazionale.png" alt=""><h3>Internazionale</h3><p>41 paesi europei, Regno Unito compreso.</p><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+  </div>
+  <div class="chips" aria-label="Settori"><a href="#">GDO e retail</a><a href="#">Food &amp; beverage</a><a href="#">Industria</a><a href="#">Edilizia</a><a href="#">Arredo</a><a href="#">E-commerce B2B</a><a href="#">Agricoltura</a><a href="#">Privati</a></div>
+</div></section>
+
+<!-- EB: Counters -->
+<section class="oe-stats"><div class="wrap">
+  <div><b>139</b><span>imprese affiliate</span></div>
+  <div><b>13K</b><span>bancali al giorno</span></div>
+  <div><b>41</b><span>paesi in Europa</span></div>
+  <div><b>2008</b><span>l'anno in cui siamo partiti</span></div>
+  <p class="def"><b style="font-family:Heebo,sans-serif;font-size:19px;display:inline;font-style:normal">One Express è un pallet network italiano</b>: una rete di 139 aziende di trasporto affiliate, con 3 hub e sede all'Interporto di Bologna, che consegna merce su pallet in tutta Italia e in 41 paesi europei.</p>
+</div></section>
+
+<!-- EB: Testimonials / storie (blog highlight) -->
+<section class="sec"><div class="wrap">
+  <span class="tag">L'Eccellenza del Territorio</span>
+  <h2 class="h2">Le storie che corrono sui nostri camion</h2>
+  <div class="stories">
+    <a class="feat" href="#"><img src="img/camionisti.jpg" alt="Autisti One Express si salutano davanti al camion"><div><span class="tag">Storia di un affiliato</span><h3>Dalla sfida all'eccellenza: il viaggio di Zanni Mar...</h3><p>Come un'impresa di territorio è cresciuta insieme alla rete One Express.</p></div></a>
+    <div class="side">
+      <a class="mini" href="#"><img src="img/testimonial-giacca.jpg" alt=""><span><span class="tag">Persone</span><h3>Indossare il blu e giallo</h3><p>Chi siamo, raccontato da chi ogni giorno è su strada.</p></span></a>
+      <a class="mini" href="#"><img src="img/testimonial-tablet.jpg" alt=""><span><span class="tag">Eventi</span><h3>Area Tour 2026</h3><p>Il network incontra gli affiliati, tappa dopo tappa.</p></span></a>
+      <div class="quote"><blockquote>«[Testimonianza breve di un cliente: cosa significa avere sempre la stessa filiale come referente.]»</blockquote><cite><b>[Nome Cognome]</b> · [Ruolo, Azienda]</cite></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- EB: CTA con immagine – Green Pallet -->
+<section class="sec oe-green"><div class="wrap">
+  <div>
+    <span class="tag">One Express Green Pallet</span>
+    <h2 class="h2">Il sole sui nostri hub. I numeri del 2024.</h2>
+    <p class="lead">Green Pallet è il programma ambientale di One Express: impianti fotovoltaici sui nostri hub e pallet in legno a standard EPAL, riutilizzabili. Dati misurati, con fonte e metodo.</p>
+    <div class="gn"><div><b>655</b><span>MWh prodotti nel 2024 dagli impianti fotovoltaici dei nostri hub*</span></div><div><b>193</b><span>tonnellate di CO₂eq stimate come evitate nel 2024*</span></div></div>
+    <p style="font-size:13px;line-height:1.5;opacity:.8;margin:0 0 26px">* Dati 2024 tratti dal Report di sostenibilità One Express, dove sono indicati perimetro, fattori di emissione e metodo di calcolo. Si riferiscono alle attività di One Express, non alla singola spedizione.</p>
+    <a class="btn btn-g" href="#"><span>Leggi dati e metodo</span></a>
+  </div>
+  <img src="img/hub-aereo-solare.jpg" alt="Hub One Express con pannelli fotovoltaici visto dall'alto">
+</div></section>
+
+<!-- EB: Request a quote + process -->
+<section class="sec oe-quote" id="preventivo"><div class="wrap">
+  <div>
+    <span class="tag">Come funziona</span>
+    <h2 class="h2">Spedire un pallet in 4 mosse</h2>
+    <ol class="steps">
+      <li><span class="n">01</span><span><h3>Chiedi il preventivo</h3><p>Ti risponde la filiale della tua zona, gratis e senza impegno.</p></span></li>
+      <li><span class="n">02</span><span><h3>Prepara il pallet</h3><p>Merce dentro la base, film estensibile, etichetta visibile.</p></span></li>
+      <li><span class="n">03</span><span><h3>Ritiriamo noi</h3><p>L'affiliato porta il pallet all'hub One Express.</p></span></li>
+      <li><span class="n">04</span><span><h3>Consegna tracciata</h3><p>Lo segui online fino alla firma.</p></span></li>
+    </ol>
+  </div>
+  <form class="qf">
+    <h3>Richiedi il tuo preventivo</h3>
+    <div class="g2">
+      <div class="field"><label for="c-q1">CAP di ritiro</label><input id="c-q1" placeholder="40127"></div>
+      <div class="field"><label for="c-q2">CAP o paese di consegna</label><input id="c-q2" placeholder="20121"></div>
+      <div class="field"><label for="c-q3">Numero di pallet</label><input id="c-q3" placeholder="2"></div>
+      <div class="field"><label for="c-q4">Peso totale (kg)</label><input id="c-q4" placeholder="900"></div>
+      <div class="field"><label for="c-q5">Servizio</label><select id="c-q5"><option>Non so, consigliatemi</option><option>Silver</option><option>Gold</option><option>Gold ore 12</option><option>GDO Plus</option><option>Internazionale</option></select></div>
+      <div class="field"><label for="c-q6">Email o telefono</label><input id="c-q6" placeholder="mario@rossisrl.it"></div>
+    </div>
+    <a class="btn btn-y" href="#"><span>Ricevi il preventivo</span></a>
+    <p class="small">Gratis e senza impegno. Per aziende e privati. Dati trattati secondo l'informativa privacy.</p>
+  </form>
+</div></section>
+
+<!-- EB: FAQ accordion + schema FAQPage -->
+<section class="sec oe-faq" id="faq"><div class="wrap fqg">
+  <div><span class="tag">Domande frequenti</span><h2 class="h2">Prima di spedire, le risposte.</h2><p class="lead">Brevi, chiare, verificate dal network.</p><div style="margin-top:28px"><a class="btn btn-y" href="#"><span>Tutte le FAQ</span></a></div></div>
+  <div>
+    <details open><summary><i>01</i>Come traccio una spedizione One Express?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg></summary><p>Inserisci il numero di spedizione o il riferimento del DDT nella barra «Traccia il tuo pallet». Vedi stato, filiale e data di consegna prevista, in italiano, inglese, tedesco e spagnolo.</p></details>
+    <details><summary><i>02</i>In quanto tempo arriva un pallet in Italia?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg></summary><p>In 24, 48 o 72 ore lavorative con il servizio standard, in base ai CAP di partenza e arrivo.</p></details>
+    <details><summary><i>03</i>Come chiedo un preventivo?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg></summary><p>Indica CAP, numero di pallet, peso e misure: la filiale della tua zona ti risponde con un prezzo chiaro, gratis.</p></details>
+    <details><summary><i>04</i>Quali sono le dimensioni standard di un pallet?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg></summary><p>L'Euro-pallet misura 120 × 80 cm, con altezza consigliata fino a 160 cm. Oltre 3.000 kg o 300 cm serve una gestione dedicata.</p></details>
+    <details><summary><i>05</i>Come si imballa un pallet?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg></summary><p>Merce dentro la base, peso uniforme, film estensibile e reggette se servono. Cartello «Non sovrapporre» se la merce non è impilabile.</p></details>
+    <details><summary><i>06</i>Posso spedire se sono un privato?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg></summary><p>Sì, tramite le filiali affiliate. Indica se ti serve la sponda idraulica.</p></details>
+    <details><summary><i>07</i>Come si calcola il costo?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg></summary><p>Distanza, peso reale, peso volumetrico e servizi accessori come sponda o appuntamento.</p></details>
+    <details><summary><i>08</i>Spedite all'estero?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg></summary><p>Sì: con la Formula Internazionale raggiungiamo 41 paesi europei, Regno Unito compreso.</p></details>
+  </div>
+</div></section>
+
+<!-- EB: Latest news -->
+<section class="sec"><div class="wrap">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap"><div><span class="tag">News</span><h2 class="h2">Ultime dal network</h2></div><a class="btn btn-l" href="#"><span>Tutte le news</span></a></div>
+  <div class="nw">
+    <a href="#"><img src="img/new-one-new-way-drone.jpg" alt="Le persone del network One Express formano la scritta ONE su un prato, vista dal drone"><time>Settembre 2026</time><h3>New One, New Way: la nuova stagione del network</h3></a>
+    <a href="#"><span class="vthumb"><img src="img/video-claudio-franceschelli.jpg" alt="Claudio Franceschelli, video"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span><span class="vb">Video</span></span><span class="vlab">I traguardi del 2026</span><h3>Un anno di grandi successi: contro ogni previsione...</h3></a>
+    <a href="#"><span class="vthumb"><img src="img/video-andrea-franceschelli.jpg" alt="Andrea Franceschelli, video"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span><span class="vb">Video</span></span><span class="vlab">Gli obiettivi del 2027</span><h3>Sarà un anno di importantissime sfide: le novità del 2027...</h3></a>
+  </div>
+</div></section>
+
+<!-- EB: Footer -->
+<footer class="oe-footer">
+  <div class="wrap"><div class="fbig" aria-hidden="true">ONE EXPRESS</div></div>
+  <div class="wrap fgrid">
+    <div><img src="img/logo3r-bianco.png" alt="One Express – il pallet espresso" style="height:70px"><p style="margin:16px 0 0">Interporto di Bologna · [indirizzo]<br>P.IVA [numero] · ISO 9001</p></div>
+    <div><h4>Servizi</h4><ul><li><a href="#">Silver</a></li><li><a href="#">Gold · Gold ore 12</a></li><li><a href="#">Value Pallet</a></li><li><a href="#">GDO Plus</a></li><li><a href="#">Internazionale</a></li></ul></div>
+    <div><h4>Strumenti</h4><ul><li><a href="#">Traccia spedizione</a></li><li><a href="#">Tempi di consegna</a></li><li><a href="#">Trova filiale</a></li><li><a href="#">Preventivo</a></li><li><a href="#">FAQ</a></li></ul></div>
+    <div><h4>Azienda</h4><ul><li><a href="#">Chi siamo</a></li><li><a href="#">Green Pallet</a></li><li><a href="#">One Academy</a></li><li><a href="#">News</a></li><li><a href="#">Lavora con noi</a></li></ul></div>
+    <div><h4>Seguici</h4><ul><li><a href="#">Facebook</a></li><li><a href="#">Instagram</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">YouTube</a></li></ul></div>
+  </div>
+  <div class="fbase"><div class="wrap"><span>© 2026 One Express</span><span><a href="#">Privacy</a> · <a href="#">Cookie</a> · <a href="#">Note legali</a></span></div></div>
+</footer>
+</div>
+</body>
+</html>
